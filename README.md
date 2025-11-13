@@ -28,6 +28,9 @@ It implements a simple social post system where:
 - DB_USERNAME=root
 - DB_PASSWORD=
 
+// if you change MAIL_MAILER -> php artisan config:cache
+// MAIL_MAILER=log / MAIL_MAILER=smtp
+
 - MAIL_MAILER=log
 - MAIL_HOST=sandbox.smtp.mailtrap.io
 - MAIL_PORT=2525
@@ -210,6 +213,11 @@ It implements a simple social post system where:
 - Comment -> belongsTo(User), belongsTo(Post)
 - Like -> belongsTo(User), belongsTo(Post)
 
+## Mail Configuration Note
+- The project uses Mailtrap for email notifications in development.
+
+- **Free Mailtrap accounts have a limit on emails per second**, so if multiple notifications are sent at once, a    `500 Internal Server Error` may occur.
+- To avoid this, you can switch to **log driver** by updating `.env`:
 
 
 ### Created Components
